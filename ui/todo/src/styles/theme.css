@@ -1,0 +1,37 @@
+:root {
+    /* Color palette */
+    --color-primary: #5bc9a4;
+    --color-secondary: #e8fff7;
+    --color-tertiary: #348c6f;
+    --white: #FFFFFF;
+    --black: #000000;
+    --black: #404040;
+    --black: #808080;
+    --black: #c0c0c0;
+    --red: #FF0000;
+    --yellow: #ffff07;
+    --green: #2efb2e;
+    --cyan: #21f1f1;
+    --blue: #0000ff;
+    --indigo: #6a5acd;
+    --magenta: #e97de9;
+    --pink: #ff7aaf;
+    
+    font-family: 'Times New Roman', Times, 'Segoe UI', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--white);
+}
+
+/* For almost all button types */
+.basic-button {
+
+}
+
+/* For arrow buttons */
+.small-button {
+
+}

@@ -1,0 +1,24 @@
+<div class="header-component">
+  <h1>
+    📝 To-Do List App
+  </h1>
+</div>
+
+<div class="component2">
+  <input type="text" [(ngModel)]="newTask" /><button (click)="addTask()">Add Task</button>
+</div>
+
+<div class="main-component">
+  <ul class="tasks-display-list">
+    <li *ngFor="let item of tasks; let i = index" class="list-item">
+      <div class="task-name">
+        &diams; {{ item.task }}
+      </div>
+      <div class="task-buttons">
+        <button type="button" (click)="deleteTask(item.id)">Delete Task</button>
+        <button type="button" (click)="swapWithPrevious(i)" [disabled]="i === 0">↑</button>
+        <button type="button" (click)="swapWithNext(i)" [disabled]="i === tasks.length - 1">↓</button>
+      </div>
+    </li>
+  </ul>
+</div>

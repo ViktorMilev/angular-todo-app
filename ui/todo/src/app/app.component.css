@@ -1,0 +1,44 @@
+.header-component {
+    background: var(--color-tertiary);
+    
+    & h1 {
+        margin: 0;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: var(--white); 
+        text-align: center;
+    }
+}
+
+.main-component {
+    margin: 35px;
+}
+
+/* Visualize the task list */
+.tasks-display-list {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-color-primary);
+    border-radius: 20px;
+}
+
+.tasks-display-list .list-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    color: var(--color-tertiary);
+}
+
+.tasks-display-list .list-item:not(:last-child) {
+    border-bottom: 1px solid var(--color-tertiary);
+}
+
+.tasks-display-list .task-name,
+.tasks-display-list .task-buttons {
+    flex: 1;
+}
+
+.tasks-display-list .task-buttons {
+    display: flex;
+    justify-content: space-around;
+}
