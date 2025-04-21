@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export class AppComponent {
   title = 'To-Do List App';
+  currentYear: number = new Date().getFullYear();
 
   tasks: any[] = [];
   newTask = '';

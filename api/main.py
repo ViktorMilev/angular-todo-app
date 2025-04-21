@@ -31,22 +31,35 @@ def root():
 @app.get("/get_tasks")
 def get_tasks():
     cursor=conn.cursor(dictionary=True)
-    cursor.execute("select * from todo")
+    cursor.execute("select * from todo ORDER BY position ASC")
     records=cursor.fetchall()
     return records
 
 @app.post("/add_task")
 def add_task(task: str=Form(...)):
     cursor=conn.cursor()
-    cursor.execute("insert into todo (task) values (%s)", (task,))
+
+    cursor.execute("SELECT MAX(position) FROM todo")
+    max_position = cursor.fetchone()[0]
+    next_position = (max_position + 1) if max_position is not None else 0
+
+    cursor.execute("INSERT INTO todo (task, position) VALUES (%s, %s)", (task, next_position))
     conn.commit()
     return "Added Succesfully"
 
 @app.post("/delete_task")
 def add_task(id: str=Form(...)):
     cursor=conn.cursor()
-    cursor.execute("delete from todo where id = %s", (id,))
+    cursor.execute("DELETE FROM todo WHERE id = %s", (id,))
     conn.commit()
+
+    cursor.execute("SELECT id FROM todo ORDER BY position ASC")
+    tasks = cursor.fetchall()
+
+    for new_pos, (task_id,) in enumerate(tasks):
+        cursor.execute("UPDATE todo SET position = %s WHERE id = %s", (new_pos, task_id))
+    conn.commit()
+
     return "Deleted Succesfully"
 
 @app.post("/swap_tasks")
